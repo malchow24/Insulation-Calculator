@@ -5,21 +5,14 @@
             <label for="inputEmail4">Ceiling</label>
             <select name="" id="" class="form-control">
                 <option value="" disabled selected></option>
-                <option value="R15">R15</option>
-                <option value="R30">R30</option>
-                <option value="R38">R38</option>
-                <option value="R49">R49</option>
+                <option value="R15" *ngFor="let ceiling of ceilingInsulation">{{ ceiling }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Walls</label>
             <select name="" id="" class="form-control">
                 <option value="" disabled selected></option>
-                <option value="R13">R13</option>
-                <option value="R13 + R6.5 C.I.">R13 + R6.5 C.I.</option>
-                <option value="R15">R15</option>
-                <option value="R15 + R6.5 C.I.">R15 + R6.5 C.I.</option>
-                <option value="R15 + R13 C.I.">R15 + R13 C.I.</option>
+                <option value="R13" *ngFor="let wall of wallInsulation">{{ wall }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
@@ -33,73 +26,20 @@
     </div>
     <h3>Building Details</h3>
     <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="">Length (Inches)</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Width (Inches)</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Height (Inches)</label>
-            <input type="text" class="form-control">
+        <div class="form-group col-md-4" *ngFor="let dimensions of buildingDetails">
+            <label for="">{{ dimensions }}</label>
+            <input type="text" class="form-control" [formControl]="formControl">
         </div>
     </div>
     <h3>Openings</h3>
     <div class="form-row">
-        <div class="form-group col-md-3">
-            <label for="3070">3070 Door</label>
+        <div class="form-group col-md-3" *ngFor="let opening of openings">
+            <label>{{ opening }}</label>
             <input type="text" class="form-control" id="3070">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="3080">3080 Door</label>
-            <input type="text" class="form-control" id="3080">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="4080">4080 Door</label>
-            <input type="text" class="form-control" id="4080">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="6080">6080 Door</label>
-            <input type="text" class="form-control" id="6080">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="2 Ton">2 Ton HVAC</label>
-            <input type="text" class="form-control" id="2-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="2.5 Ton">2.5 Ton HVAC</label>
-            <input type="text" class="form-control" id="2.5-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="3 Ton">3 Ton HVAC</label>
-            <input type="text" class="form-control" id="3-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="3.5 Ton">3.5 Ton HVAC</label>
-            <input type="text" class="form-control" id="3.5-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="4 Ton">4 Ton HVAC</label>
-            <input type="text" class="form-control" id="4-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="5 Ton">5 Ton HVAC</label>
-            <input type="text" class="form-control" id="5-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="6 Ton">6 Ton HVAC</label>
-            <input type="text" class="form-control" id="6-Ton">
-        </div>
-        <div class="form-group col-md-3">
-            <label for="EQ Door">EQ Door Length</label>
-            <input type="text" class="form-control" id="EQ">
         </div>
         <div class="form-group col-md-12">
             <label for="">Total Openings</label>
             <p id="Total"></p>
         </div>
     </div>
-    <h3>Usage Summary</h3>
-  </form>
+</form>
