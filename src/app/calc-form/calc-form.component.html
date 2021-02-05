@@ -1,23 +1,23 @@
 <form>
     <h3>Insulation Details</h3>
-    <div class="form-row">
+    <div class="form-row" [formGroup]="formGroup">
         <div class="form-group col-md-4">
             <label for="inputEmail4">Ceiling</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="form-control" [formControl]="formGroup.controls.ceiling">
                 <option value="" disabled selected></option>
-                <option value="R15" *ngFor="let ceiling of ceilingInsulation">{{ ceiling }}</option>
+                <option *ngFor="let ceil of ceilingInsulation" [ceilingType]="ceil">{{ ceil }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Walls</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="form-control" [formControl]="formGroup.controls.walls">
                 <option value="" disabled selected></option>
-                <option value="R13" *ngFor="let wall of wallInsulation">{{ wall }}</option>
+                <option value="R13"></option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Firecode Sheetrock?</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="form-control" [formControl]="formGroup.controls.sheetrock">
                 <option value="" disabled selected></option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -25,13 +25,21 @@
         </div>
     </div>
     <h3>Building Details</h3>
-    <div class="form-row">
-        <div class="form-group col-md-4" *ngFor="let dimensions of buildingDetails">
-            <label for="">{{ dimensions }}</label>
-            <input type="text" class="form-control" [formControl]="formControl">
+    <div class="form-row" [formGroup]="formGroup2">
+        <div class="form-group col-md-4">
+            <label for="length">Length(In.)</label>
+            <input type="text" class="form-control" [formControl]="formGroup2.controls.length">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="width">Width (In.)</label>
+            <input type="text" class="form-control" [formControl]="formGroup2.controls.width">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="height">Height (In.)</label>
+            <input type="text" class="form-control" [formControl]="formGroup2.controls.height">
         </div>
     </div>
-    <h3>Openings</h3>
+<!-- <h3>Openings</h3>
     <div class="form-row">
         <div class="form-group col-md-3" *ngFor="let opening of openings">
             <label>{{ opening }}</label>
@@ -41,5 +49,11 @@
             <label for="">Total Openings</label>
             <p id="Total"></p>
         </div>
-    </div>
+    </div> -->
 </form>
+
+
+
+
+
+<!--[formControl]="formControl"-->

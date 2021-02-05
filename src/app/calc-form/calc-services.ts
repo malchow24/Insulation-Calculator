@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class CeilingInsulation {
     ceilingInsulation = [
         {
@@ -16,17 +18,4 @@ export class CeilingInsulation {
             ceilingType: 'R49'
         }
     ];
-
-    getCeiling = (name: string) => {
-        if(name === "R15") {
-            console.log('R15');
-        } else if (name === "R30") {
-            console.log("R30"); 
-        } else if (name === "R38") {
-            console.log("R38"); 
-        } else {
-            console.log("R49");
-            
-        }
-    }
 }   
