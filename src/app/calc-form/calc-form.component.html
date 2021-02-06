@@ -1,42 +1,41 @@
 <form>
     <h3>Insulation Details</h3>
-    <div class="form-row" [formGroup]="formGroup">
+    <div class="form-row" [formGroup]="insulationDetails">
         <div class="form-group col-md-4">
             <label for="inputEmail4">Ceiling</label>
-            <select name="" id="" class="form-control" [formControl]="formGroup.controls.ceiling">
+            <select name="" id="ceiling" class="form-control" [formControl]="insulationDetails.controls.ceiling">
                 <option value="" disabled selected></option>
                 <option *ngFor="let ceil of ceilingInsulation">{{ ceil }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Walls</label>
-            <select name="" id="" class="form-control" [formControl]="formGroup.controls.walls">
+            <select name="" id="" class="form-control" [formControl]="insulationDetails.controls.walls">
                 <option value="" disabled selected></option>
-                <option value *ngFor="let wall of wallInsulation">{{ wall }}</option>
+                <option value="{{ wall }}" *ngFor="let wall of wallInsulation">{{ wall }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Firecode Sheetrock?</label>
-            <select name="" id="" class="form-control" [formControl]="formGroup.controls.sheetrock">
+            <select name="" id="" class="form-control" [formControl]="insulationDetails.controls.sheetrock">
                 <option value="" disabled selected></option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option value="{{ sheet }}" *ngFor="let sheet of sheetrock">{{ sheet }}</option>
             </select>
         </div>
     </div>
     <h3>Building Details</h3>
-    <div class="form-row" [formGroup]="formGroup2">
+    <div class="form-row" [formGroup]="buildingDetails">
         <div class="form-group col-md-4">
             <label for="length">Length(In.)</label>
-            <input type="text" class="form-control" [formControl]="formGroup2.controls.length">
+            <input type="number" class="form-control" [formControl]="buildingDetails.controls.length" id="length">
         </div>
         <div class="form-group col-md-4">
             <label for="width">Width (In.)</label>
-            <input type="text" class="form-control" [formControl]="formGroup2.controls.width">
+            <input type="number" class="form-control" [formControl]="buildingDetails.controls.width">
         </div>
         <div class="form-group col-md-4">
             <label for="height">Height (In.)</label>
-            <input type="text" class="form-control" [formControl]="formGroup2.controls.height">
+            <input type="number" class="form-control" [formControl]="buildingDetails.controls.height">
         </div>
     </div>
 <!-- <h3>Openings</h3>
@@ -50,6 +49,9 @@
             <p id="Total"></p>
         </div>
     </div> -->
+    <div class="output">
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Calculate</button>
+    </div>
 </form>
 
 

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs/operators';
-import { CeilingInsulation, WallInsulation } from './calc-services';
+import { InsulationService } from './calc-services';
 
 @Component({
   selector: 'app-calc-form',
@@ -9,35 +9,62 @@ import { CeilingInsulation, WallInsulation } from './calc-services';
   styleUrls: ['./calc-form.component.css']
 })
 export class CalcFormComponent implements OnInit {
+  //Variables
   ceilingInsulation: string[];
   wallInsulation: string[];
+  sheetrock: string[];
 
-  public formGroup:FormGroup = new FormGroup({
+  //Insulation FormGroup
+  public insulationDetails:FormGroup = new FormGroup({
     ceiling: new FormControl(''),
     walls: new FormControl(''),
-    sheetrock: new FormControl('')
+    sheetrock: new FormControl(''),
+    output: new FormControl('')
   });
 
-  public formGroup2:FormGroup = new FormGroup({
+  //Building Details FormGroup
+  public buildingDetails:FormGroup = new FormGroup({
     length: new FormControl(''),
     width: new FormControl(''),
     height: new FormControl(''),
   })
 
-  constructor(private ceilingService: CeilingInsulation, private wallService: WallInsulation) { }
+  //Getting services
+  constructor(private insulationService: InsulationService) { }
 
   ngOnInit(): void {
-    this.ceilingInsulation = this.ceilingService.ceilingInsulation;
-    this.wallInsulation = this.wallService.wallInsulation;
+    this.ceilingInsulation = this.insulationService.ceilingInsulation;
+    this.wallInsulation = this.insulationService.wallInsulation;
+    this.sheetrock = this.insulationService.sheetrock;
+
     
-    
-    /* this.formControl.valueChanges.pipe(
+    //Set the value of the Ceiling
+    this.insulationDetails.controls.ceiling.valueChanges.pipe(
       tap((val) => {
-        console.log(val);
-        
+        this.insulationService.setCeilingType(val);
       })
-    ).subscribe(); */
-  }
+    ).subscribe();
+
+
+    //Set the value of the walls
+    this.insulationDetails.controls.walls.valueChanges.pipe(
+      tap((val) => {
+        this.insulationService.setWallType(val);
+      })
+    ).subscribe();
+
+    //Set the value of sheetroc to y/n
+    this.insulationDetails.controls.sheetrock.valueChanges.pipe(
+      tap((val) => {
+        this.insulationService.setSheetrock(val);
+      })
+    ).subscribe();
+  };
+
+  onSubmit() {
+    console.log(this.insulationDetails);
+    console.log(this.buildingDetails)
+    
+  };
 }
-//Three seperate form groups
-//ng build --prod
+//ng build --prod -- To update site
