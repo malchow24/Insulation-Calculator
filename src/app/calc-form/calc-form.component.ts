@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs/operators';
-import { CeilingInsulation } from './calc-services';
+import { CeilingInsulation, WallInsulation } from './calc-services';
 
 @Component({
   selector: 'app-calc-form',
@@ -9,7 +9,8 @@ import { CeilingInsulation } from './calc-services';
   styleUrls: ['./calc-form.component.css']
 })
 export class CalcFormComponent implements OnInit {
-  ceilingInsulation: {ceilingType: string}[] = [];
+  ceilingInsulation: string[];
+  wallInsulation: string[];
 
   public formGroup:FormGroup = new FormGroup({
     ceiling: new FormControl(''),
@@ -23,15 +24,12 @@ export class CalcFormComponent implements OnInit {
     height: new FormControl(''),
   })
 
-
-  wallInsulation = ['R13', 'R13 + R6.5 C.I.', 'R15', 'R15 + R6.5 C.I.', 'R15 + R13 C.I.'];
-
-
-  constructor(private ceilingService: CeilingInsulation) { }
+  constructor(private ceilingService: CeilingInsulation, private wallService: WallInsulation) { }
 
   ngOnInit(): void {
     this.ceilingInsulation = this.ceilingService.ceilingInsulation;
-    console.log(this.ceilingInsulation)
+    this.wallInsulation = this.wallService.wallInsulation;
+    
     
     /* this.formControl.valueChanges.pipe(
       tap((val) => {
