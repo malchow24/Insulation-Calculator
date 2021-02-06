@@ -18,10 +18,8 @@ export class InsulationService {
         } else if (val === 'R49') {
             console.log('R15 Batts: ');
             console.log('R21 Batts: ');
-            
         } else {
             console.log('no value selected');
-            
         };
     }
 
@@ -38,9 +36,8 @@ export class InsulationService {
             console.log('1" Thermax Sheets: ')
         } else {
             console.log('no value selected');
-            
         }
-    }
+    };
 
     setSheetrock(val: string) {
         if(val === 'Yes') {
