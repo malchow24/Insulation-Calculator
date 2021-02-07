@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs/operators';
 import { InsulationService } from '../calc-services';
 
 @Component({
@@ -58,59 +57,42 @@ export class CalcFormComponent implements OnInit {
   //Getting services
   constructor(private insulationService: InsulationService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.ceilingInsulation = this.insulationService.ceilingInsulation;
     this.wallInsulation = this.insulationService.wallInsulation;
     this.sheetrock = this.insulationService.sheetrock;
-    this.length = this.buildingDetails.controls.length.value;
-    this.width = this.buildingDetails.controls.width.value;
-    this.height = this.buildingDetails.controls.height.value;
-    /* this.openings = 37126; */
-    this.openings = 0;
+    this.openings = 37126;
 
-    this.buildingDetails.controls.length.valueChanges.pipe(
-      tap((val) => {
-        this.length = val;
-        return this.length;
-      })
-    ).subscribe();
+    //Set building details
+    this.buildingDetails.controls.length.valueChanges.subscribe(val => {
+      this.length = val;
+      return this.length;
+    });
 
-    this.buildingDetails.controls.width.valueChanges.pipe(
-      tap((val) => {
-        this.width = val;
-        return this.width;
-      })
-    ).subscribe();
+    this.buildingDetails.controls.width.valueChanges.subscribe(val => {
+      this.width = val;
+      return this.width;
+    });
 
-    this.buildingDetails.controls.height.valueChanges.pipe(
-      tap((val) => {
-        this.height = val;
-        return this.height;
-      })
-    ).subscribe();
+    this.buildingDetails.controls.height.valueChanges.subscribe(val => {
+      this.height = val;
+      return this.height;
+    });
 
+    //set insulation details
+    this.insulationDetails.controls.ceiling.valueChanges.subscribe(val => {
+      this.ceilingOutput = this.insulationService.setCeilingType(val, this.length, this.width)
+    })
 
-    //Set the value of the Ceiling
-    this.insulationDetails.controls.ceiling.valueChanges.pipe(
-      tap((val) => {
-        this.ceilingOutput = this.insulationService.setCeilingType(val, this.length, this.width); 
-      })
-    ).subscribe();
+    this.insulationDetails.controls.walls.valueChanges.subscribe(val => {
+      this.wallOutput = this.insulationService.setWallType(val, this.length, this.width, this.height, this.openings);
+      console.log(this.wallOutput);
+      
+    })
 
-
-    //Set the value of the walls
-    this.insulationDetails.controls.walls.valueChanges.pipe(
-      tap((val) => {
-        this.wallOutput = this.insulationService.setWallType(val, this.length, this.width, this.height, this.openings);
-      })
-    ).subscribe();
-
-    //Set the value of sheetroc to y/n
-    this.insulationDetails.controls.sheetrock.valueChanges.pipe(
-      tap((val) => {
-        this.firecodeOutput = this.insulationService.setSheetrock(val, this.length, this.width, this.height, this.openings);
-      })
-    ).subscribe();
+    this.insulationDetails.controls.sheetrock.valueChanges.subscribe(val => {
+      this.firecodeOutput = this.insulationService.setSheetrock(val, this.length, this.width, this.height, this.openings)
+    })
   };
 }
 //ng build --prod -- To update site

@@ -19,18 +19,6 @@ export class InsulationService {
     wallsheets: number;
     totalOpenings: number;
 
-
-    //Set Building Details
-    onChange(UpdatedValue: number) {
-        this.length = UpdatedValue;
-    }
-    onWidthChange(UpdatedValue: number) {
-        this.width = UpdatedValue;
-    }
-    onHeightChange(UpdatedValue: number) {
-        this.height = UpdatedValue;
-    }
-
     //Ceiling Information
     setCeilingType(val: String, length: number, width: number) {
         if(val === 'R15') {
