@@ -117,7 +117,7 @@
     <h3>Insulation Details</h3>
     <div class="form-row" [formGroup]="insulationDetails">
         <div class="form-group col-md-4">
-            <label for="inputEmail4">Ceiling</label>
+            <label for="ceiling">Ceiling</label>
             <select class="form-control" 
                     [formControl]="insulationDetails.controls.ceiling">
                 <option value="" disabled selected></option>
@@ -125,7 +125,7 @@
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label for="inputPassword4">Walls</label>
+            <label for="walls">Walls</label>
             <select class="form-control" 
                     [formControl]="insulationDetails.controls.walls">
                 <option value="" disabled selected></option>
@@ -133,7 +133,7 @@
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label for="inputPassword4">Firecode Sheetrock?</label>
+            <label for="sheetrock">Firecode Sheetrock?</label>
             <select class="form-control" 
                     [formControl]="insulationDetails.controls.sheetrock">
                 <option value="" disabled selected></option>
