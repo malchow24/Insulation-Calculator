@@ -1,56 +1,113 @@
 <form>
+    <h3>Building Details</h3>
+    <div class="form-row" [formGroup]="buildingDetails">
+        <div class="form-group col-md-4">
+            <label for="length">Length(In.)</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="buildingDetails.controls.length"
+                    id="length">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="width">Width (In.)</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="buildingDetails.controls.width">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="height">Height (In.)</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="buildingDetails.controls.height">
+        </div>
+    </div>
     <h3>Insulation Details</h3>
     <div class="form-row" [formGroup]="insulationDetails">
         <div class="form-group col-md-4">
             <label for="inputEmail4">Ceiling</label>
-            <select name="" id="ceiling" class="form-control" [formControl]="insulationDetails.controls.ceiling">
+            <select class="form-control" 
+                    [formControl]="insulationDetails.controls.ceiling">
                 <option value="" disabled selected></option>
                 <option *ngFor="let ceil of ceilingInsulation">{{ ceil }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Walls</label>
-            <select name="" id="" class="form-control" [formControl]="insulationDetails.controls.walls">
+            <select class="form-control" 
+                    [formControl]="insulationDetails.controls.walls">
                 <option value="" disabled selected></option>
-                <option value="{{ wall }}" *ngFor="let wall of wallInsulation">{{ wall }}</option>
+                <option *ngFor="let wall of wallInsulation">{{ wall }}</option>
             </select>
         </div>
         <div class="form-group col-md-4">
             <label for="inputPassword4">Firecode Sheetrock?</label>
-            <select name="" id="" class="form-control" [formControl]="insulationDetails.controls.sheetrock">
+            <select class="form-control" 
+                    [formControl]="insulationDetails.controls.sheetrock">
                 <option value="" disabled selected></option>
-                <option value="{{ sheet }}" *ngFor="let sheet of sheetrock">{{ sheet }}</option>
+                <option *ngFor="let sheet of sheetrock">{{ sheet }}</option>
             </select>
         </div>
     </div>
-    <h3>Building Details</h3>
-    <div class="form-row" [formGroup]="buildingDetails">
-        <div class="form-group col-md-4">
-            <label for="length">Length(In.)</label>
-            <input type="number" class="form-control" [formControl]="buildingDetails.controls.length" id="length">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="width">Width (In.)</label>
-            <input type="number" class="form-control" [formControl]="buildingDetails.controls.width">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="height">Height (In.)</label>
-            <input type="number" class="form-control" [formControl]="buildingDetails.controls.height">
-        </div>
-    </div>
-<!-- <h3>Openings</h3>
+<h3>Openings</h3>
     <div class="form-row">
-        <div class="form-group col-md-3" *ngFor="let opening of openings">
-            <label>{{ opening }}</label>
-            <input type="text" class="form-control" id="3070">
+        <div class="form-group col-md-2">
+            <label>3070 Door</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>3080 Door</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>4080 Door</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>6080 Door</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>2 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>2.5 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>3 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>3.5 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>4 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>5 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>6 Ton HVAC</label>
+            <input type="number" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <label>EQ Dnumber</label>
+            <input type="text" class="form-control">
         </div>
         <div class="form-group col-md-12">
             <label for="">Total Openings</label>
             <p id="Total"></p>
         </div>
-    </div> -->
+    </div>
     <div class="output">
-        <button class="btn btn-primary" type="button" (click)="onSubmit()">Calculate</button>
+        <h3 *ngIf="ceilingOutput || wallOutput || firecodeOutput">Insulation Required</h3>
+        <h4 id="ceiling">{{ ceilingOutput }}</h4>
+        <h4 id="wall">{{ wallOutput }}</h4>
+        <h4 id="firecode">{{ firecodeOutput }}</h4>
     </div>
 </form>
 
