@@ -107,7 +107,7 @@ export class CalcFormComponent implements OnInit {
     //Set the value of sheetroc to y/n
     this.insulationDetails.controls.sheetrock.valueChanges.pipe(
       tap((val) => {
-        this.firecodeOutput = this.insulationService.setSheetrock(val);
+        this.firecodeOutput = this.insulationService.setSheetrock(val, this.length, this.width, this.height, this.openings);
       })
     ).subscribe();
   };
