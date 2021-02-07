@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { InsulationService } from '../calc-services';
 
@@ -12,7 +12,7 @@ export class CalcFormComponent implements OnInit {
   //Variables
   ceilingInsulation: string[];
   wallInsulation: string[];
-  /* openings: string[]; */
+  openingTypes: string[];
   sheetrock: string[];
   length: number;
   width: number;
@@ -65,7 +65,8 @@ export class CalcFormComponent implements OnInit {
     this.length = this.buildingDetails.controls.length.value;
     this.width = this.buildingDetails.controls.width.value;
     this.height = this.buildingDetails.controls.height.value;
-    this.openings = 37126;
+    /* this.openings = 37126; */
+    this.openings = 0;
 
     this.buildingDetails.controls.length.valueChanges.pipe(
       tap((val) => {
@@ -111,11 +112,6 @@ export class CalcFormComponent implements OnInit {
       })
     ).subscribe();
   };
-
-  onSubmit() {
-    console.log(this.insulationDetails);
-    console.log(this.buildingDetails)
-    
-  };
 }
 //ng build --prod -- To update site
+//firebase deploy

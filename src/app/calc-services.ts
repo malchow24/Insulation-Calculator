@@ -4,12 +4,12 @@ import { Injectable } from "@angular/core";
     providedIn: 'root',
 })
 export class InsulationService {
+    //Variables
     ceilingInsulation = ['R15', 'R30', 'R38', 'R49'];
     sheetrock = ['Yes', 'No'];
     sheetsRequired: number;
     wallInsulation = ['R13', 'R13 + R6.5 C.I', 'R15', 'R15 + R6.5 C.I', 'R15 + R13 C.I'];
-    openings = ['3070 Door', '3080 Door', '4080 Door', '6080 Door', '2 Ton HVAC', '2.5 Ton HVAC', '3 Ton HVAC', '3.5 Ton HVAC', 
-'3.5 Ton HVAC', '4 Ton HVAC', '5 Ton HVAC', '6 Ton HVAC', 'EQ Door Length'];
+    openingTypes = ['3070 Door', '3080 Door', '4080 Door', '6080 Door', '2 Ton HVAC', '2.5 Ton HVAC', '3 Ton HVAC', '3.5 Ton HVAC', '3.5 Ton HVAC', '4 Ton HVAC', '5 Ton HVAC', '6 Ton HVAC', 'EQ Door Length'];
     length: number; 
     width: number;
     height: number;
@@ -17,7 +17,10 @@ export class InsulationService {
     batts2: number;
     wallbatts: number;
     wallsheets: number;
+    totalOpenings: number;
 
+
+    //Set Building Details
     onChange(UpdatedValue: number) {
         this.length = UpdatedValue;
     }
@@ -28,7 +31,7 @@ export class InsulationService {
         this.height = UpdatedValue;
     }
 
-
+    //Ceiling Information
     setCeilingType(val: String, length: number, width: number) {
         if(val === 'R15') {
             this.batts = (length * width / 144 / 77.5 * 0.9375);
@@ -46,6 +49,7 @@ export class InsulationService {
         }
     };
 
+    //Wall information 
     setWallType(val: string, length: number, width: number, height: number, openings: number) {
         if(val === 'R13') {
             this.wallbatts = ((length * (height - 21) * 2 - openings)/144 + (width * (height - 21) * 2)/144) / 116.3 * 0.9375;
@@ -68,6 +72,7 @@ export class InsulationService {
         } 
     };
 
+    //Sheetrock
     setSheetrock(val: string, length: number, width: number, height: number, openings: number) {
         if(val === 'Yes') {
             this.sheetsRequired = ((length * (height - 21) * 2 - openings) / 144 + (width * (height - 21) * 2) / 144) / 32 * 1.2;
@@ -75,6 +80,6 @@ export class InsulationService {
         } else if(val === 'No') {
             console.log('None');
         }
-    };    
+    };   
 }   
 

@@ -21,6 +21,98 @@
                     [formControl]="buildingDetails.controls.height">
         </div>
     </div>
+    <h3>Openings</h3>
+    <div class="form-row" [formGroup]="Openings">
+        <div class="form-group col-md-2">
+            <label>3070 Door</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.door3070" 
+                    value="3070">
+        </div>
+        <div class="form-group col-md-2">
+            <label>3080 Door</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.door3080"
+                    value="3520"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>4080 Door</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.door4080"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>6080 Door</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.door6080"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>2 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac2"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>2.5 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac2Half"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>3 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.havc3"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>3.5 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac3Half"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>4 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac4"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>5 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac5"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>6 Ton HVAC</label>
+            <input  type="number" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.hvac6"
+                    >
+        </div>
+        <div class="form-group col-md-2">
+            <label>EQ Length</label>
+            <input  type="text" 
+                    class="form-control" 
+                    [formControl]="Openings.controls.eqDoors"
+                    >
+        </div>
+        <div class="form-group col-md-12">
+            <label for="">Total Openings</label>
+            <p id="Total">{{ openings }} Inches</p>
+        </div>
+    </div>
     <h3>Insulation Details</h3>
     <div class="form-row" [formGroup]="insulationDetails">
         <div class="form-group col-md-4">
@@ -46,61 +138,6 @@
                 <option value="" disabled selected></option>
                 <option *ngFor="let sheet of sheetrock">{{ sheet }}</option>
             </select>
-        </div>
-    </div>
-<h3>Openings</h3>
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <label>3070 Door</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>3080 Door</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>4080 Door</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>6080 Door</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>2 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>2.5 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>3 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>3.5 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>4 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>5 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>6 Ton HVAC</label>
-            <input type="number" class="form-control">
-        </div>
-        <div class="form-group col-md-2">
-            <label>EQ Dnumber</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-12">
-            <label for="">Total Openings</label>
-            <p id="Total"></p>
         </div>
     </div>
     <div class="output">
