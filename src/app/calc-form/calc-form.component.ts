@@ -65,19 +65,16 @@ export class CalcFormComponent implements OnInit {
 
     //Set building details
     this.buildingDetails.controls.length.valueChanges.subscribe(val => {
-      this.length = val;
-      return this.length;
-    });
+      this.length = this.insulationService.setlength(val);      
+    })
 
     this.buildingDetails.controls.width.valueChanges.subscribe(val => {
-      this.width = val;
-      return this.width;
+      this.width = this.insulationService.setWidth(val);
     });
 
     this.buildingDetails.controls.height.valueChanges.subscribe(val => {
-      this.height = val;
-      return this.height;
-    });
+      this.height = this.insulationService.setHeight(val);
+    })
 
     //set insulation details
     this.insulationDetails.controls.ceiling.valueChanges.subscribe(val => {

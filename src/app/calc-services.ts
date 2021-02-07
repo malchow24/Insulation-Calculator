@@ -19,6 +19,21 @@ export class InsulationService {
     wallsheets: number;
     totalOpenings: number;
 
+    setlength(length: number) {
+        this.length = length;
+        return this.length;
+    }
+
+    setWidth(width: number) {
+        this.width = width;
+        return this.width;
+    }
+
+    setHeight(height: number) {
+        this.height = height;
+        return this.height;
+    }
+
     //Ceiling Information
     setCeilingType(val: String, length: number, width: number) {
         if(val === 'R15') {
