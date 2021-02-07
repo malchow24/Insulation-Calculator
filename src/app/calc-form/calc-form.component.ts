@@ -64,6 +64,7 @@ export class CalcFormComponent implements OnInit {
     this.openings = 37126;
 
     //Set building details
+
     this.buildingDetails.controls.length.valueChanges.subscribe(val => {
       this.length = this.insulationService.setlength(val);      
     })
