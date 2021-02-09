@@ -21,6 +21,7 @@ export class CalcFormComponent implements OnInit {
   firecodeOutput: string; 
   wallBatts: number;
   openings: number;
+  keys: number;
 
 
   //Insulation FormGroup
@@ -64,40 +65,30 @@ export class CalcFormComponent implements OnInit {
     this.openings = 37126;
     console.log(this.buildingDetails.controls['length']);
     
-    const keys = Object.keys(this.buildingDetails.controls)
-    console.log(keys);
+    const keys = Object.keys(this.buildingDetails.controls);
+
+    
     
 
     //Set building details
 
     this.buildingDetails.valueChanges.subscribe(val => {
-      this.length = this.insulationService.setlength(val);  
-      console.log(val);
+      this.length = this.insulationService.setlength(val);
+      console.log(this.length);
+      
+      this.width = this.insulationService.setWidth(val);
+      this.height = this.insulationService.setHeight(val);
           
     })
 
-    /* this.buildingDetails.controls.width.valueChanges.subscribe(val => {
-      this.width = this.insulationService.setWidth(val);
-    });
-
-    this.buildingDetails.controls.height.valueChanges.subscribe(val => {
-      this.height = this.insulationService.setHeight(val);
-    }) */
-
     //set insulation details
-    this.insulationDetails.controls.ceiling.valueChanges.subscribe(val => {
-      this.ceilingOutput = this.insulationService.setCeilingType(val, this.length, this.width)
-    })
-
-    this.insulationDetails.controls.walls.valueChanges.subscribe(val => {
-      this.wallOutput = this.insulationService.setWallType(val, this.length, this.width, this.height, this.openings);
-      console.log(this.wallOutput);
+    this.insulationDetails.valueChanges.subscribe(val => {
+      this.ceilingOutput = this.insulationService.setCeilingType(val, this.length, this.width);
+      console.log(this.ceilingOutput);
       
-    })
-
-    this.insulationDetails.controls.sheetrock.valueChanges.subscribe(val => {
-      this.firecodeOutput = this.insulationService.setSheetrock(val, this.length, this.width, this.height, this.openings)
-    })
+      this.wallOutput = this.insulationService.setWallType(val, this.length, this.width, this.height, this.openings);
+      this.firecodeOutput = this.insulationService.setSheetrock(val, this.length, this.width, this.height, this.openings);
+    });
   };
 }
 //ng build --prod -- To update site
