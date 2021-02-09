@@ -62,20 +62,27 @@ export class CalcFormComponent implements OnInit {
     this.wallInsulation = this.insulationService.wallInsulation;
     this.sheetrock = this.insulationService.sheetrock;
     this.openings = 37126;
+    console.log(this.buildingDetails.controls['length']);
+    
+    const keys = Object.keys(this.buildingDetails.controls)
+    console.log(keys);
+    
 
     //Set building details
 
-    this.buildingDetails.controls.length.valueChanges.subscribe(val => {
-      this.length = this.insulationService.setlength(val);      
+    this.buildingDetails.valueChanges.subscribe(val => {
+      this.length = this.insulationService.setlength(val);  
+      console.log(val);
+          
     })
 
-    this.buildingDetails.controls.width.valueChanges.subscribe(val => {
+    /* this.buildingDetails.controls.width.valueChanges.subscribe(val => {
       this.width = this.insulationService.setWidth(val);
     });
 
     this.buildingDetails.controls.height.valueChanges.subscribe(val => {
       this.height = this.insulationService.setHeight(val);
-    })
+    }) */
 
     //set insulation details
     this.insulationDetails.controls.ceiling.valueChanges.subscribe(val => {
