@@ -19,23 +19,39 @@ export class InsulationService {
     wallsheets: number;
     totalOpenings: number;
 
-    setlength(length: number) {
-        this.length = length;
-        return this.length;
+    setOpenings(val: string, opening: number) {
+        if(val === "3070 Door") {
+            this.totalOpenings = this.totalOpenings + (opening * 3520);
+        } else if(val === "3080 Door") {
+            this.totalOpenings = this.totalOpenings + (opening * 3600);
+        } else if(val === "4080 Door") {
+            this.totalOpenings = this.totalOpenings + (opening * 5252);
+        } else if(val === "6080 Door") {
+            this.totalOpenings = this.totalOpenings + (opening * 7676);
+        } else if(val === "2 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 682);
+        } else if(val === "2.5 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 744);
+        } else if(val === "3 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 744);
+        } else if(val === "3.5 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 868);
+        } else if(val === "4 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 868);
+        } else if(val === "5 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 868);
+        } else if(val === "6 Ton HVAC") {
+            this.totalOpenings = this.totalOpenings + (opening * 868);
+        } else if(val === "EQ Door Length") {
+            this.totalOpenings = this.totalOpenings + (opening * 110);
+        }
+        return this.totalOpenings;
     }
 
-    setWidth(width: number) {
-        this.width = width;
-        return this.width;
-    }
-
-    setHeight(height: number) {
-        this.height = height;
-        return this.height;
-    }
+    
 
     //Ceiling Information
-    setCeilingType(val: String, length: number, width: number) {
+    setCeilingType(val: string, length: number, width: number) {
         if(val === 'R15') {
             this.batts = (length * width / 144 / 77.5 * 0.9375);
             return `Ceiling -  R15 Batts: ${this.batts.toFixed(2)}`;
@@ -50,7 +66,7 @@ export class InsulationService {
             this.batts2 = (length * width / 144 / 67.81 * 0.9375 * 0.5);
             return `Ceiling - R21 Batts: ${this.batts2.toFixed(2)} | R15 Batts: ${this.batts.toFixed(2)}`;
         }
-    };
+    }
 
     //Wall information 
     setWallType(val: string, length: number, width: number, height: number, openings: number) {
@@ -73,7 +89,7 @@ export class InsulationService {
             this.wallsheets = ((length * (height - 21) * 2 - openings) / 144 + (width * (height - 21) * 2) / 144) / 32 * 1.2 * 2;
             return `Wall - R15 Batts: ${this.wallbatts.toFixed(2)} | 1" Thermax Sheets: ${this.wallsheets.toFixed(2)}`;
         } 
-    };
+    }
 
     //Sheetrock
     setSheetrock(val: string, length: number, width: number, height: number, openings: number) {
@@ -83,6 +99,6 @@ export class InsulationService {
         } else if(val === 'No') {
             console.log('None');
         }
-    };   
+    }   
 }   
 

@@ -21,21 +21,20 @@
                     [formControl]="buildingDetails.controls.height">
         </div>
     </div>
-    <!-- <h3>Openings</h3>
+    <h3>Openings</h3>
     <div class="form-row" [formGroup]="Openings">
         <div class="form-group col-md-2">
             <label>3070 Door</label>
             <input  type="number" 
                     class="form-control" 
                     [formControl]="Openings.controls.door3070" 
-                    value="3070">
+                    >
         </div>
         <div class="form-group col-md-2">
             <label>3080 Door</label>
             <input  type="number" 
                     class="form-control" 
                     [formControl]="Openings.controls.door3080"
-                    value="3520"
                     >
         </div>
         <div class="form-group col-md-2">
@@ -112,7 +111,7 @@
             <label for="">Total Openings</label>
             <p id="Total">{{ openings }} Inches</p>
         </div>
-    </div> -->
+    </div>
     <h3>Insulation Details</h3>
     <div class="form-row" [formGroup]="insulationDetails">
         <div class="form-group col-md-4">
@@ -147,9 +146,3 @@
         <h4 id="firecode">{{ firecodeOutput }}</h4>
     </div>
 </form>
-
-
-
-
-
-<!--[formControl]="formControl"-->
