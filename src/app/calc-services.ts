@@ -7,6 +7,7 @@ export class InsulationService {
     //Variables
     ceilingInsulation = ['R15', 'R30', 'R38', 'R49'];
     sheetrock = ['Yes', 'No'];
+    buildingDetailLabels = ['Length (In.)', 'Width (In.)', 'Height (In.)']
     sheetsRequired: number;
     wallInsulation = ['R13', 'R13 + R6.5 C.I', 'R15', 'R15 + R6.5 C.I', 'R15 + R13 C.I'];
     openingTypes = ['3070 Door', '3080 Door', '4080 Door', '6080 Door', '2 Ton HVAC', '2.5 Ton HVAC', '3 Ton HVAC', '3.5 Ton HVAC', '3.5 Ton HVAC', '4 Ton HVAC', '5 Ton HVAC', '6 Ton HVAC', 'EQ Door Length'];

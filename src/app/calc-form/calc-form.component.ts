@@ -10,6 +10,7 @@ import { InsulationService } from '../calc-services';
 export class CalcFormComponent implements OnInit {
   //Variables
   ceilingInsulation: string[];
+  buildingDetailLabels: string[];
   wallInsulation: string[];
   openingTypes: string[];
   sheetrock: string[];
@@ -22,7 +23,10 @@ export class CalcFormComponent implements OnInit {
   wallBatts: number;
   openings: number;
   keys: object;
+  totalOpenings: object;
+  insulationKeys: object;
   ceilingKeys: any;
+  buidlingDetailsKeys: string[];
 
 
   //Insulation FormGroup
@@ -64,11 +68,12 @@ export class CalcFormComponent implements OnInit {
     this.wallInsulation = this.insulationService.wallInsulation;
     this.sheetrock = this.insulationService.sheetrock;
     this.openingTypes = this.insulationService.openingTypes;
+    this.buildingDetailLabels = this.insulationService.buildingDetailLabels;
     this.openings = 0;
     
-    const keys = Object.keys(this.buildingDetails.controls);
-    const totalOpenings = Object.keys(this.Openings.controls);
-    const insulationKeys = Object.keys(this.insulationDetails.controls)
+    this.keys = Object.keys(this.buildingDetails.controls);
+    this.totalOpenings = Object.keys(this.Openings.controls);
+    this.insulationKeys = Object.keys(this.insulationDetails.controls)
 
     //Set building details
     this.buildingDetails.valueChanges.subscribe(val => {

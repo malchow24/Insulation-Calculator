@@ -1,111 +1,20 @@
 <form>
     <h3>Building Details</h3>
     <div class="form-row" [formGroup]="buildingDetails">
-        <div class="form-group col-md-4">
-            <label for="length">Length(In.)</label>
+        <div class="form-group col-md-4" *ngFor="let key of keys; let i = index">
+            <label for="length">{{ buildingDetailLabels[i] }}</label>
             <input  type="number" 
                     class="form-control" 
-                    [formControl]="buildingDetails.controls.length"
-                    >
-        </div>
-        <div class="form-group col-md-4">
-            <label for="width">Width (In.)</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="buildingDetails.controls.width">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="height">Height (In.)</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="buildingDetails.controls.height">
+                    [formControl]="buildingDetails.controls[key]">
         </div>
     </div>
     <h3>Openings</h3>
     <div class="form-row" [formGroup]="Openings">
-        <div class="form-group col-md-2">
-            <label>3070 Door</label>
+        <div class="form-group col-md-2" *ngFor="let key of totalOpenings; let i = index">
+            <label>{{ openingTypes[i] }}</label>
             <input  type="number" 
                     class="form-control" 
-                    [formControl]="Openings.controls.door3070" 
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>3080 Door</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.door3080"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>4080 Door</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.door4080"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>6080 Door</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.door6080"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>2 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac2"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>2.5 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac2Half"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>3 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.havc3"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>3.5 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac3Half"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>4 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac4"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>5 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac5"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>6 Ton HVAC</label>
-            <input  type="number" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.hvac6"
-                    >
-        </div>
-        <div class="form-group col-md-2">
-            <label>EQ Length</label>
-            <input  type="text" 
-                    class="form-control" 
-                    [formControl]="Openings.controls.eqDoors"
-                    >
+                    [formControl]="Openings.controls[key]">
         </div>
         <div class="form-group col-md-12">
             <label for="">Total Openings</label>
