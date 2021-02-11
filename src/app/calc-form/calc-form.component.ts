@@ -12,7 +12,7 @@ export class CalcFormComponent implements OnInit {
   ceilingInsulation: string[];
   buildingDetailLabels: string[];
   wallInsulation: string[];
-  openingTypes: string[];
+  openingTypes: {name: string, multiplier: number}[];
   sheetrock: string[];
   length: number;
   width: number;
@@ -27,6 +27,7 @@ export class CalcFormComponent implements OnInit {
   insulationKeys: object;
   ceilingKeys: any;
   buidlingDetailsKeys: string[];
+
 
 
   //Insulation FormGroup
@@ -68,6 +69,8 @@ export class CalcFormComponent implements OnInit {
     this.wallInsulation = this.insulationService.wallInsulation;
     this.sheetrock = this.insulationService.sheetrock;
     this.openingTypes = this.insulationService.openingTypes;
+    console.log(this.openingTypes[1].multiplier);
+    
     this.buildingDetailLabels = this.insulationService.buildingDetailLabels;
     this.openings = 0;
     

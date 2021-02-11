@@ -10,7 +10,48 @@ export class InsulationService {
     buildingDetailLabels = ['Length (In.)', 'Width (In.)', 'Height (In.)']
     sheetsRequired: number;
     wallInsulation = ['R13', 'R13 + R6.5 C.I', 'R15', 'R15 + R6.5 C.I', 'R15 + R13 C.I'];
-    openingTypes = ['3070 Door', '3080 Door', '4080 Door', '6080 Door', '2 Ton HVAC', '2.5 Ton HVAC', '3 Ton HVAC', '3.5 Ton HVAC', '3.5 Ton HVAC', '4 Ton HVAC', '5 Ton HVAC', '6 Ton HVAC', 'EQ Door Length'];
+    openingTypes = [
+        {
+            name: '3070 Door',
+            multiplier: 3520
+        },
+        {  name: '3080 Door',
+            multiplier: 3600
+        },
+        {  name: '4080 Door',
+            multiplier: 5252
+        },
+        {  name: '6080 Door',
+            multiplier: 7676
+        },
+        {  name: '2 Ton HVAC',
+            multiplier: 682
+        },
+        {  name: '2.5 Ton HVAC',
+            multiplier: 744
+        },
+        {   name: '3 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: '3.5 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: '3.5 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: '4 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: '5 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: '6 Ton HVAC',
+            multiplier: 868
+        },
+        {   name: 'EQ Door Length',
+            multiplier: 110
+        }
+    ];
     length: number; 
     width: number;
     height: number;
@@ -20,7 +61,7 @@ export class InsulationService {
     wallsheets: number;
     totalOpenings: number;
 
-    setOpenings(val: string, opening: number) {
+    setOpenings(val:string, opening: number) {
         if(val === "3070 Door") {
             this.totalOpenings = this.totalOpenings + (opening * 3520);
         } else if(val === "3080 Door") {

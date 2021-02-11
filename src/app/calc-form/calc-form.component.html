@@ -11,7 +11,7 @@
     <h3>Openings</h3>
     <div class="form-row" [formGroup]="Openings">
         <div class="form-group col-md-2" *ngFor="let key of totalOpenings; let i = index">
-            <label>{{ openingTypes[i] }}</label>
+            <label>{{ openingTypes[i].name }}</label>
             <input  type="number" 
                     class="form-control" 
                     [formControl]="Openings.controls[key]">
