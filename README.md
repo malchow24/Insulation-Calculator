@@ -1,6 +1,8 @@
 # InsulationCalculator
 **In Progress**
 
+Building an insulation calculator for my current job using Angular. I have to forecast the insulation amounts for each job, and right now I calculate it manually. Using this, I will be able to plug in the building details, and see how much of each type I need.
+
 https://insulation-calculator.web.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
