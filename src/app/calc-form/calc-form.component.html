@@ -2,7 +2,7 @@
     <h3>Building Details</h3>
     <div class="form-row" [formGroup]="buildingDetails">
         <div class="form-group col-md-4" *ngFor="let key of keys; let i = index">
-            <label for="length">{{ buildingDetailLabels[i] }}</label>
+            <label for="length">{{ insulationService.buildingDetailLabels[i] }}</label>
             <input  type="number" 
                     class="form-control" 
                     [formControl]="buildingDetails.controls[key]">
@@ -11,7 +11,7 @@
     <h3>Openings</h3>
     <div class="form-row" [formGroup]="Openings">
         <div class="form-group col-md-2" *ngFor="let key of totalOpenings; let i = index">
-            <label>{{ openingTypes[i].name }}</label>
+            <label>{{ insulationService.openingTypes[key].name }}</label>
             <input  type="number" 
                     class="form-control" 
                     [formControl]="Openings.controls[key]">

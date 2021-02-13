@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { InsulationService } from '../calc-services';
+import { InsulationService, OpeningType } from '../calc-services';
+import { map, tap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-calc-form',
@@ -10,9 +11,7 @@ import { InsulationService } from '../calc-services';
 export class CalcFormComponent implements OnInit {
   //Variables
   ceilingInsulation: string[];
-  buildingDetailLabels: string[];
   wallInsulation: string[];
-  openingTypes: {name: string, multiplier: number}[];
   sheetrock: string[];
   length: number;
   width: number;
@@ -62,16 +61,14 @@ export class CalcFormComponent implements OnInit {
   });
 
   //Getting services
-  constructor(private insulationService: InsulationService) { }
+  constructor(private insulationService: InsulationService) {
+    
+  }
 
   ngOnInit(): void {    
     this.ceilingInsulation = this.insulationService.ceilingInsulation;
     this.wallInsulation = this.insulationService.wallInsulation;
     this.sheetrock = this.insulationService.sheetrock;
-    this.openingTypes = this.insulationService.openingTypes;
-    console.log(this.openingTypes[1].multiplier);
-    
-    this.buildingDetailLabels = this.insulationService.buildingDetailLabels;
     this.openings = 0;
     
     this.keys = Object.keys(this.buildingDetails.controls);
@@ -80,10 +77,23 @@ export class CalcFormComponent implements OnInit {
 
     //Set building details
     this.buildingDetails.valueChanges.subscribe(val => {
-      this.length = this.buildingDetails.controls.length.value;
-      this.width = this.buildingDetails.controls.width.value;
-      this.height = this.buildingDetails.controls.height.value; 
+      this.length = val.length
+      this.width = val.width;
+      this.height = val.height; 
+      
     });
+
+    this.Openings.valueChanges.pipe(
+      tap((newOpenings) => {
+        let sum = 0;
+        Object.entries(newOpenings).map(([name, count]: [string,OpeningType]) => {
+          sum += newOpenings[name] * this.insulationService.openingTypes[name].multiplier 
+        })
+        this.openings = sum;
+        return this.openings;
+
+      })
+    ).subscribe();
 
     //set insulation details
     this.insulationDetails.valueChanges.subscribe(val => {
